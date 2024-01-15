@@ -15,7 +15,7 @@
   .header {
     width: 100%; /* Pour que le header prenne toute la largeur de la page */
     background-color: rgb(255, 255, 255); /* Pour définir la couleur blanche */
-    height: 235px;
+    height: 400px;
   }
   h1{
     color: black;

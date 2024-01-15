@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .footer {
   position: absolute;
- margin-top: 650px;
+ margin-top: 880px;
   width: 100%;
   background-color: violet;
   color: #fff;
@@ -24,8 +24,5 @@ export default {
 .footer h3 {
 color: rgb(159, 17, 17);
 text-align: center;
-
-
-
 }
 </style>
