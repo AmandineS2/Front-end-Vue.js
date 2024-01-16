@@ -26,66 +26,88 @@
       </div>
     </div>
     </div>
+    <DetailView v-else></DetailView>
   </template>
   
   <script>
-  export default {
-    name: 'SectionConnexion'
-  };
+  
+import FilmService from "../services/FilmService.js";
 
-import FilmService from "../services/FilmService"
-import Film from "./MoviesView.vue"
+import { useCounterStore} from "@/stores/counter.js"
+import { mapState, mapActions } from "pinia";
+import { registerRuntimeCompiler } from 'vue';
+import DetailView from "./views/DetailView.vue";
+import UserService from '@/services/UserService.js'
 
-  export default {
-
-    component:{Film},
-    mounted(){
-      this.$refs.boutonrecherche.focus()
-    },
-    
+export default {
+  components: {DetailView},
     data () {
        return { 
-       query: '',
-       films: []
+        title: 'Authentification',
+        error:'',
        
       }
       
     },
-
-
-    watch: {
-
-     async query(){
-        this.films = await FilmService.search(this.query);
-      }
-
+    
+    computed: {
+        // bind this.loggedIn to useCounterStore().loggedIn
+        ...mapState(useCounterStore, ["loggedIn"])
     },
-
-
-    methods: {
-
-      async DetailView (){
-        this.films = await FilmService.search(this.query);
-      },
+   methods:{ 
+    // submitLogin(){
+    //   const loginMessage = this.login({
       
-    numberOfStars(film){ 
-      return '⭐'.repeat(Math.floor(film.metascore/100*5))
-    }
-    },
-        computed: {
-      filterFilms () {
-        if (this.query === '') return this.films;
+    //     user: {
+    //       email: this.email,
+    //       password: this.password
+    //     }
+    //   })
 
-        return this.films.filter((item) => {
-          return item.title.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+    //   this.error ='';
+    //   if (!loginMessage) {
+    //     this.error = 'Mauvais identifiants';
+    //   }
+    // }, 
+    ...mapActions(useCounterStore, ["login"]),
+
+
+    async register () {
+      this.error = null;
+      try {
+        const response = await UserService.register({
+          email: this.email,
+          username: this.email,
+          plainPassword: this.password,
+          firstname: 'John',
+          lastname: 'Smith'
         })
-      }
-    }
-  }
+        const session = useCounterStore();
+        session.login({ user: response.user, token: response.token });
+        this.$router.push('/HomeView') // Redirection vers la page HomeView.vue
+        } catch (error) {
+            this.error = error.toString()
+         }
+    },
 
+    async login () {
+      this.error = null;
+      try {
+        const response = await UserService.login({ username: this.email, password: this.password })
+        const session = useCounterStore();
+        session.login({ token: response.token });
+        this.$router.push('/HomeView') // Redirection vers la page HomeView.vue
+    } catch (error) {
+            this.error = error.toString()
+         }
+    }
   
-  </script>
-  
+
+  }
+}
+</script>
+
+
   <style scoped>
 
 .connexion-view {

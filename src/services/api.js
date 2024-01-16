@@ -1,9 +1,9 @@
-import { useSession } from '../stores/counter.js'
+import { useCounterStore } from '../stores/counter.js'
 
 export const BASE_URL = 'http://127.0.0.1:8000'
 
 export async function api (url, params = {}) {
-    const session = useSession()
+    const session = useCounterStore()
 
     params = Object.assign({
         mode: 'cors',

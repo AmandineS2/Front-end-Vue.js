@@ -14,15 +14,21 @@ import Navbar from './components/Navbar.vue';
 import Header from './components/Header.vue';
 import SectionFooter from './components/SectionFooter.vue';
 
+import { useCounterStore } from "./stores/counter"
+import { mapState, mapActions } from "pinia";
+
 
 export default {
-  components: {
-    Navbar,
-    Header, // Enregistrer le composant d'en-tête
-    SectionFooter,
-    
-    
+  data(){
+    return {
+    }
   },
-  // Autres configurations
-};
+  
+  computed: {
+        // bind this.loggedIn to useSession().loggedIn
+        ...mapState(useCounterStore, ["loggedIn"])
+    },
+  components: { Navbar, SectionFooter, Header, }
+}
+
 </script>

@@ -2,11 +2,33 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+  persist: true,
+  state: () => {
+    return {
+      user: null,
+      loggedIn: false,
+      token: null
+    }
+  },
+  actions: {
+    login({ user, token }) {
+      if (token) {
+      this.loggedIn = true
+      this.token = token
+     /* this.user = {
+          email: user.email
+      }*/
+        return true;
+      }
 
-  return { count, doubleCount, increment }
+      return false;
+    },
+
+    logout() {
+      this.loggedIn = false
+      this.user = null;
+      this.token = null
+    }
+
+  }
 })
