@@ -2,17 +2,16 @@
     <div class="movies-view">
       <h3>Affiche des films</h3>
       <div class="card-container-movies">
-        <div class="card" v-for="(film, index) in films" :key="index" @click="showText(index)">
-          {{ film }}
-          <p v-if="selectedText" class="description-text">
-            Titre: {{ selectedText.description }} <br>
-            Description: {{ selectedText.description }} <br>
-            Résumé: {{ selectedText.resume }} <br>
-            Acteurs: {{ selectedText.actors }}
-          </p>
+    <div class="card"  v-for="(film, index) in films" :key="index">
+      
+      <router-link :to="'/detail/' + index">
+    {{ film.title }}
+    
+  </router-link>
+    </div>
         </div>
       </div>
-    </div>
+    
   </template>
   
   <script>
@@ -20,10 +19,22 @@
     name: 'SectionMovies',
     data() {
       return {
-        films: ['Film 1', 'Film 2', 'Film 3', 'Film 4'],
-        descriptions: ['Description du film 1', 'Description du film 2', 'Description du film 3', 'Description du film 4'],
-        resume: ['Résumé du film 1', 'Résumé du film 2', 'Résumé du film 3', 'Résumé du film 4'],
-        actors: ['Acteurs du film 1', 'Acteurs du film 2', 'Acteurs du film 3', 'Acteurs du film 4'],
+        films: [{
+          title: 'Film 1',
+          description: 'Dscription film 1',
+          resume: 'Résumé du film 1',
+          actors: 'Acteurs du film 1'
+        }, {
+          title: 'Film 2',
+          description: 'Dscription film 2',
+          resume: 'Résumé du film 2',
+          actors: 'Acteurs du film 2'
+        }, {
+          title: 'Film 3',
+          description: 'Dscription film 3',
+          resume: 'Résumé du film 3',
+          actors: 'Acteurs du film 3'
+        }],
         selectedText: '' // Initialisez la donnée pour le texte sélectionné
       };
     },

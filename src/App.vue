@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view />
     <Header /> <!-- Inclure votre en-tête -->
+    <router-view />
     <SectionFooter />
     
     

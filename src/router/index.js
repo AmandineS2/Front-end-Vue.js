@@ -4,10 +4,18 @@ import MoviesView from '../views/MoviesView.vue'
 import ActorsView from '../views/ActorsView.vue'
 import CategorieView from '../views/CategorieView.vue'
 import ConnexionView from '../views/ConnexionView.vue'
+// import SectionMovies from './SectionMovies.vue';
+import DetailView from '../views/DetailView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+
+    {
+      path: '/detail/:id',
+      name: 'detail', 
+      component: DetailView, 
+    },
     {
       path: '/HomeView',
       name: 'Accueil',
@@ -33,7 +41,8 @@ const router = createRouter({
       name: 'Connexion',
       component: ConnexionView
     },
-  ]
+
+  ],
 });
 
 export default router
