@@ -13,7 +13,7 @@ export default {
 <style scoped>
 .footer {
   position: absolute;
- margin-top:1280px;
+ margin-top:850px;
   width: 100%;
   background-color: violet;
   color: #fff;

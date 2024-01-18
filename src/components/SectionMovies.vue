@@ -31,7 +31,7 @@
     },
   async created() {
     
-    this.films = await api(`/api/movies`)
+    this.films = await api(`/api/movies`,)
     this.films = this.films['hydra:member']
 
   }
