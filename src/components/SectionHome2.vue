@@ -16,8 +16,8 @@
   background-color: aliceblue;
   width: 100%;
   position: absolute;
-  margin-top: 880px;
-  height: 400px;
+  margin-top: 435px;
+  height: 428px;
   display: flex;
   flex-direction: column; /* Pour aligner les éléments verticalement */
   align-items: center; /* Centre les éléments horizontalement */

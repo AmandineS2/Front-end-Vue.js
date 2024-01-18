@@ -1,7 +1,7 @@
 <template>
   <div class="home-view">
     
-    <SectionHome /> <!-- Inclure le composant de la section d'accueil -->
+    <MoviesView v-if="loggedIn" /> <!-- Inclure le composant de la section d'accueil -->
     <SectionHome2 /> <!-- Inclure le composant de la section d'accueil -->
  
   </div>
@@ -9,15 +9,20 @@
 
 <script>
 
-import SectionHome from '../components/SectionHome.vue';
 import SectionHome2 from '../components/SectionHome2.vue';
+import MoviesView from './MoviesView.vue';
+import { useCounterStore} from "@/stores/counter.js"
+import { mapState } from "pinia";
 
 
 export default {
   components: {
-  SectionHome,
-  SectionHome2,
-
-  }
+    SectionHome2,
+    MoviesView
+},
+    computed: {
+        // bind this.loggedIn to useCounterStore().loggedIn
+        ...mapState(useCounterStore, ["loggedIn"])
+    },
 };
 </script>

@@ -1,7 +1,8 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', () => {
+
+export const useCounterStore = defineStore('counter', {
   persist: true,
   state: () => {
     return {
@@ -11,10 +12,13 @@ export const useCounterStore = defineStore('counter', () => {
     }
   },
   actions: {
-    login({ user, token }) {
+    login({ token }) {
       if (token) {
       this.loggedIn = true
       this.token = token
+
+
+      console.log(token)
      /* this.user = {
           email: user.email
       }*/

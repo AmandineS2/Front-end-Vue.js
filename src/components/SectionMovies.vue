@@ -4,7 +4,7 @@
       <div class="card-container-movies">
     <div class="card"  v-for="(film, index) in films" :key="index">
       
-      <router-link :to="'/detail/' + index">
+      <router-link :to="'/detail/' + film.id">
     {{ film.title }}
     
   </router-link>
@@ -15,26 +15,12 @@
   </template>
   
   <script>
+  import { api } from '@/services/api.js'
   export default {
     name: 'SectionMovies',
     data() {
       return {
-        films: [{
-          title: 'Film 1',
-          description: 'Dscription film 1',
-          resume: 'Résumé du film 1',
-          actors: 'Acteurs du film 1'
-        }, {
-          title: 'Film 2',
-          description: 'Dscription film 2',
-          resume: 'Résumé du film 2',
-          actors: 'Acteurs du film 2'
-        }, {
-          title: 'Film 3',
-          description: 'Dscription film 3',
-          resume: 'Résumé du film 3',
-          actors: 'Acteurs du film 3'
-        }],
+        films: [],
         selectedText: '' // Initialisez la donnée pour le texte sélectionné
       };
     },
@@ -42,7 +28,13 @@
       showText(index) {
         this.selectedText = `${this.descriptions[index]} - ${this.resume[index]} - ${this.actors[index]}`;
       }
-    }
+    },
+  async created() {
+    
+    this.films = await api(`/api/movies`)
+    this.films = this.films['hydra:member']
+
+  }
   };
   </script>
   
@@ -52,8 +44,8 @@
   background-color: aliceblue;
   width: 100%;
   position: absolute;
-  margin-top: 450px;
-  height: 850px;
+  margin-top: 17px;
+  height: 400px;
   display: flex;
   flex-direction: column; /* Pour aligner les éléments verticalement */
   align-items: center; /* Centre les éléments horizontalement */

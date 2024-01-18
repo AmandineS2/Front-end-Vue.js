@@ -1,12 +1,43 @@
 <template>
-    <div class="navbar">
-      <div class="nav-item"><router-link to="/HomeView" class="nav-link">Accueil</router-link></div>
-      <div class="nav-item"><router-link to="/MoviesView" class="nav-link">Films</router-link></div>
-      <div class="nav-item"><router-link to="/ActorsView" class="nav-link">Acteurs</router-link></div>
-      <div class="nav-item"><router-link to="/CategorieView" class="nav-link">Catégories</router-link></div>
-      <div class="nav-item"><router-link to="/ConnexionView" class="nav-link">Connexion</router-link></div>
+  <div class="navbar">
+    <div class="nav-item"><router-link to="/HomeView" class="nav-link">Accueil</router-link></div>
+    <div class="nav-item"><router-link to="/MoviesView" class="nav-link">Films</router-link></div>
+    <div class="nav-item"><router-link to="/ActorsView" class="nav-link">Acteurs</router-link></div>
+    <div class="nav-item"><router-link to="/CategorieView" class="nav-link">Categories</router-link></div>
+    <div class="nav-item" v-if="loggedIn">
+      <router-link to="/DeconnexionView" class="nav-link">Déconnexion</router-link>
     </div>
+    <div class="nav-item" v-else>
+      <router-link to="/ConnexionView" class="nav-link">Connexion</router-link>
+    </div>
+  </div>
 </template>
+
+<script>
+
+import { useCounterStore} from "@/stores/counter.js"
+import { mapState } from "pinia";
+
+export default {
+  data() {
+    return {
+      loggedIn: false 
+    };
+  },
+  created() {
+    
+    if (this.loggedIn) {
+      this.loggedIn = true;
+      
+    }
+  },
+
+  computed: {
+        // bind this.loggedIn to useCounterStore().loggedIn
+        ...mapState(useCounterStore, ["loggedIn"])
+    },
+};
+</script>
   
   <style>
   .navbar {

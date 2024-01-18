@@ -15,7 +15,8 @@ import Header from './components/Header.vue';
 import SectionFooter from './components/SectionFooter.vue';
 
 import { useCounterStore } from "./stores/counter"
-import { mapState, mapActions } from "pinia";
+import { mapState } from "pinia";
+
 
 
 export default {

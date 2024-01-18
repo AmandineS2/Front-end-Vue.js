@@ -1,12 +1,12 @@
 <template>
-    <div class="connexion-view">
+    <div class="connexion-view" >
       <h3>Affiche des films</h3>
       <div class="card-container">
       <!-- Insérez le contenu de vos cartes ici -->
       <div class="card">
         <div id="login-form" v-if="!loggedIn">
             
-            <form @submit.prevent="login">
+            <form @submit.prevent="_login">
               <h1>{{ title }}</h1>
               <p>Remplissez ce formulaire pour vous connecter.</p>
               <hr>
@@ -22,25 +22,23 @@
         
               <p>{{ error }}</p>
             </form>
-            </div>
+          </div>
       </div>
     </div>
     </div>
-    <DetailView v-else></DetailView>
   </template>
   
   <script>
   
-import FilmService from "../services/FilmService.js";
+
 
 import { useCounterStore} from "@/stores/counter.js"
 import { mapState, mapActions } from "pinia";
-import { registerRuntimeCompiler } from 'vue';
-import DetailView from "./views/DetailView.vue";
+import MoviesView from "../views/MoviesView.vue";
 import UserService from '@/services/UserService.js'
 
 export default {
-  components: {DetailView},
+  components: {MoviesView},
     data () {
        return { 
         title: 'Authentification',
@@ -90,13 +88,14 @@ export default {
          }
     },
 
-    async login () {
+    async _login () {
       this.error = null;
       try {
         const response = await UserService.login({ username: this.email, password: this.password })
         const session = useCounterStore();
+        console.log(response.token )
         session.login({ token: response.token });
-        this.$router.push('/HomeView') // Redirection vers la page HomeView.vue
+        this.$router.push('/HomeView'); // Redirection vers la page HomeView.vue
     } catch (error) {
             this.error = error.toString()
          }
