@@ -3,7 +3,6 @@
       <h3>Affiche des films</h3>
       <div class="card-container">
       <!-- Insérez le contenu de vos cartes ici -->
-      fghjkhkhj
       <div class="card"></div>
       <div class="card"></div>
       <div class="card"></div>
@@ -24,7 +23,7 @@
   background-color: aliceblue;
   width: 100%;
   position: absolute;
-  margin-top: 450px;
+  margin-top: 18px;
   height: 400px;
   display: flex;
   flex-direction: column; /* Pour aligner les éléments verticalement */
