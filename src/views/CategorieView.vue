@@ -1,7 +1,7 @@
 <template>
-  <div class="movies-view">
+  <div class="Categorie-view">
     
-    <SectionMovies /> <!-- Inclure le composant de la section d'accueil -->
+    <SectionCategorie /> <!-- Inclure le composant de la section d'accueil -->
     
  
   </div>
@@ -9,13 +9,13 @@
 
 <script>
 
-import SectionMovies from '../components/SectionMovies.vue';
+import SectionCategorie from '../components/SectionCategorie.vue';
 
 
 
 export default {
   components: {
-  SectionMovies,
+  SectionCategorie,
  
 
   }

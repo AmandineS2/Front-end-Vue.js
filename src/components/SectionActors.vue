@@ -1,11 +1,11 @@
 <template>
-    <div class="movies-view">
-      <h3>Affiche des films</h3>
-      <div class="card-container-movies">
-    <div class="card-movies"  v-for="(film, index) in films" :key="index">
+    <div class="actors-view">
+      <h3>Affiche des acteurs</h3>
+      <div class="card-container-actors">
+    <div class="card"  v-for="(actor, index) in actors" :key="index">
       
-      <router-link :to="'/detail/' + film.id">
-    {{ film.title }}
+      <router-link :to="'/detail2/' + actor.id">
+    {{ actor.title }}
     
   </router-link>
     </div>
@@ -17,7 +17,7 @@
   <script>
   import { api } from '@/services/api.js'
   export default {
-    name: 'SectionMovies',
+    name: 'SectionActors',
     data() {
       return {
         films: [],
@@ -26,13 +26,13 @@
     },
     methods: {
       showText(index) {
-        this.selectedText = `${this.descriptions[index]} - ${this.resume[index]} - ${this.actors[index]}`;
+        this.selectedText = `${this.descriptions[index]} - ${this.resume[index]} - ${this.film[index]}`;
       }
     },
   async created() {
     
-    this.films = await api(`/api/movies/`,)
-    this.films = this.films['hydra:member']
+    this.actors = await api(`/api/actors/`,)
+    this.actors = this.actors['hydra:member']
 
   }
   };
@@ -40,41 +40,40 @@
   
   <style scoped>
 
-.movies-view {
+.actors-view {
   background-color: aliceblue;
   width: 100%;
   position: absolute;
-  margin-top: 17px;
+  margin-top: 425px;
   height: 400px;
   display: flex;
   flex-direction: column; /* Pour aligner les éléments verticalement */
   align-items: center; /* Centre les éléments horizontalement */
 }
 
-.movies-view h3 {
+.actors-view h3 {
   color: rgb(159, 17, 17);
   text-align: center;
   margin-top: 25px;
 }
 
-.card-container-movies {
+.card-container-actors {
   display: flex;
   justify-content: space-around; /* Pour espacer les cartes de manière égale */
   width: 90%; /* Ajustez la largeur selon vos besoins */
-  margin-top: 75px;
+  margin-top: 437px;
 }
 
-.card-movies {
+.card-actors {
   width: 20%; /* Ajustez la largeur selon vos besoins */
-  margin: 10px; /* Ajoute de l'espace entre les cartes */
+  margin: 437px; /* Ajoute de l'espace entre les cartes */
   padding: 20px;
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center; /* Centre le texte horizontalement */
   cursor: pointer; /* Change le curseur au survol pour indiquer que la carte est cliquable */
-  height: 266px;
-  margin-top: 8px;
+  height: 400px;
 }
 
 .description-text {

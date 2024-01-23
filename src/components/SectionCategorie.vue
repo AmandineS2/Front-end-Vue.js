@@ -1,8 +1,8 @@
 <template>
-    <div class="movies-view">
+    <div class="categorie-view">
       <h3>Affiche des films</h3>
-      <div class="card-container-movies">
-    <div class="card-movies"  v-for="(film, index) in films" :key="index">
+      <div class="card-container-categorie">
+    <div class="card-categorie"  v-for="(film, index) in films" :key="index">
       
       <router-link :to="'/detail/' + film.id">
     {{ film.title }}
@@ -17,7 +17,7 @@
   <script>
   import { api } from '@/services/api.js'
   export default {
-    name: 'SectionMovies',
+    name: 'SectionCategorie',
     data() {
       return {
         films: [],
@@ -31,7 +31,7 @@
     },
   async created() {
     
-    this.films = await api(`/api/movies/`,)
+    this.films = await api(`/api/categories/`,)
     this.films = this.films['hydra:member']
 
   }
@@ -40,7 +40,7 @@
   
   <style scoped>
 
-.movies-view {
+.categorie-view {
   background-color: aliceblue;
   width: 100%;
   position: absolute;
@@ -51,20 +51,20 @@
   align-items: center; /* Centre les éléments horizontalement */
 }
 
-.movies-view h3 {
+.categorie-view h3 {
   color: rgb(159, 17, 17);
   text-align: center;
   margin-top: 25px;
 }
 
-.card-container-movies {
+.card-container-categorie {
   display: flex;
   justify-content: space-around; /* Pour espacer les cartes de manière égale */
   width: 90%; /* Ajustez la largeur selon vos besoins */
   margin-top: 75px;
 }
 
-.card-movies {
+.card-categorie {
   width: 20%; /* Ajustez la largeur selon vos besoins */
   margin: 10px; /* Ajoute de l'espace entre les cartes */
   padding: 20px;

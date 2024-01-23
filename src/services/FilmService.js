@@ -5,5 +5,6 @@ export default {
         return api ('/api/movies' + title, {
          method: 'GET'
         })
-    }
+    },
+    
 }

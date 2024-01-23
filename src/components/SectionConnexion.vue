@@ -1,9 +1,9 @@
 <template>
     <div class="connexion-view" >
       <h3>Affiche des films</h3>
-      <div class="card-container">
+      <div class="card-container-form">
       <!-- Insérez le contenu de vos cartes ici -->
-      <div class="card">
+      <div class="card-form">
         <div id="login-form" v-if="!loggedIn">
             
             <form @submit.prevent="_login">
@@ -35,10 +35,11 @@
 import { useCounterStore} from "@/stores/counter.js"
 import { mapState, mapActions } from "pinia";
 import MoviesView from "../views/MoviesView.vue";
+import ActorsView from "../views/ActorsView.vue";
 import UserService from '@/services/UserService.js'
 
 export default {
-  components: {MoviesView},
+  components: {MoviesView, ActorsView},
     data () {
        return { 
         title: 'Authentification',
@@ -126,14 +127,14 @@ export default {
   margin-top: 25px;
 }
 
-.card-container {
+.card-container-form {
   display: flex;
   justify-content: center; /* Centre les cartes horizontalement */
   width: 50%;
   margin-top: 75px;
 }
 
-.card {
+.card-form {
   flex: 1;
   margin: 10px;
   padding: 20px;
@@ -141,5 +142,9 @@ export default {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: 200px;
+}
+
+#login-form {
+  color: black;
 }
 </style>
