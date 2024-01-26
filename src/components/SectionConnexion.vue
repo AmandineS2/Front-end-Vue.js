@@ -1,6 +1,6 @@
 <template>
     <div class="connexion-view" >
-      <h3>Affiche des films</h3>
+      <h3>Connexion</h3>
       <div class="card-container-form">
       <!-- Insérez le contenu de vos cartes ici -->
       <div class="card-form">
@@ -121,7 +121,7 @@ export default {
   align-items: center; /* Centre les éléments horizontalement */
 }
 
-.home-view h3 {
+.home-view, h3 {
   color: rgb(159, 17, 17);
   text-align: center;
   margin-top: 25px;

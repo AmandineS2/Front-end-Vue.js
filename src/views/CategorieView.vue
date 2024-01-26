@@ -1,25 +1,28 @@
 <template>
-  <div class="Categorie-view">
-    
-    <SectionCategorie /> <!-- Inclure le composant de la section d'accueil -->
-    
- 
+  <div class="actors-view">
+    <template v-if="loggedIn">
+      <SectionCategories/> <!-- Include the MoviesView component when logged in -->
+      
+    </template>
+    <template v-else>
+      <SectionCategoriesInactive /> <!-- Include the SectionHome component when not logged in -->
+      
+    </template>
   </div>
 </template>
 
 <script>
 
-import SectionCategorie from '../components/SectionCategorie.vue';
-
+import SectionCategories from '../components/SectionActors.vue';
+import SectionCategoriesInactive from '@/components/SectionCategoriesInactive.vue';
 
 
 export default {
   components: {
-  SectionCategorie,
+  SectionCategories,
+  SectionCategoriesInactive,
  
 
   }
 };
 </script>
-  
-  

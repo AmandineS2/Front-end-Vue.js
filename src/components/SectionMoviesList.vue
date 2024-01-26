@@ -1,8 +1,8 @@
 <template>
-    <div class="movies-view">
+    <div class="movieslist-view">
       <h3>Affiche des films</h3>
-      <div class="card-container-movies">
-    <div class="card-movies"  v-for="(film, index) in films" :key="index">
+      <div class="card-container-movies-list">
+    <div class="card-movies-list"  v-for="(film, index) in films" :key="index">
       
       <router-link :to="'/detail/' + film.id">
     {{ film.title }}
@@ -41,7 +41,7 @@
   
   <style scoped>
 
-.movies-view {
+.movieslist-view {
   background-color: aliceblue;
   width: 100%;
   position: absolute;
@@ -58,14 +58,14 @@
   margin-top: 25px;
 }
 
-.card-container-movies {
+.card-container-movies-list {
   display: flex;
   justify-content: space-around; /* Pour espacer les cartes de manière égale */
   width: 90%; /* Ajustez la largeur selon vos besoins */
   margin-top: 75px;
 }
 
-.card-movies {
+.card-movies-list {
   width: 20%; /* Ajustez la largeur selon vos besoins */
   margin: 10px; /* Ajoute de l'espace entre les cartes */
   padding: 20px;

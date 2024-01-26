@@ -2,10 +2,10 @@
     <div class="actors-view">
       <h3>Affiche des acteurs</h3>
       <div class="card-container-actors">
-    <div class="card"  v-for="(actor, index) in actors" :key="index">
+    <div class="card-actors"  v-for="actor in actors" :key="actor.id">
       
       <router-link :to="'/detail2/' + actor.id">
-    {{ actor.title }}
+    {{ actor.lastname }}  {{ actor.firstname }}
     
   </router-link>
     </div>
@@ -20,7 +20,7 @@
     name: 'SectionActors',
     data() {
       return {
-        films: [],
+        actors: [],
         selectedText: '' // Initialisez la donnée pour le texte sélectionné
       };
     },
@@ -31,7 +31,7 @@
     },
   async created() {
     
-    this.actors = await api(`/api/actors/`,)
+    this.actors = await api(`/api/actors/`)
     this.actors = this.actors['hydra:member']
 
   }
@@ -44,7 +44,7 @@
   background-color: aliceblue;
   width: 100%;
   position: absolute;
-  margin-top: 425px;
+  margin-top: 150px;
   height: 400px;
   display: flex;
   flex-direction: column; /* Pour aligner les éléments verticalement */
@@ -61,19 +61,19 @@
   display: flex;
   justify-content: space-around; /* Pour espacer les cartes de manière égale */
   width: 90%; /* Ajustez la largeur selon vos besoins */
-  margin-top: 437px;
+ /* margin-top: 437px;*/
 }
 
 .card-actors {
   width: 20%; /* Ajustez la largeur selon vos besoins */
-  margin: 437px; /* Ajoute de l'espace entre les cartes */
+ /* margin: 437px;*/ /* Ajoute de l'espace entre les cartes */
   padding: 20px;
   background-color: #f2f2f2;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center; /* Centre le texte horizontalement */
   cursor: pointer; /* Change le curseur au survol pour indiquer que la carte est cliquable */
-  height: 400px;
+  height: 200px;
 }
 
 .description-text {

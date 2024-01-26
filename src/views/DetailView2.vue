@@ -1,10 +1,7 @@
 <!-- DetailView2.vue -->
 <template>
     <div>
-      <h2>{{ actor.title }}</h2>
-      <p>Description: {{ film.description }}</p>
-      <p>Résumé: {{ film.resume }}</p>
-      <p>Film: {{ film.actors }}</p>
+      <h2>{{ actor.firstname }} {{ actor.lastname }} {{ actor.movies }}</h2>
     </div>
   </template>
   
@@ -20,7 +17,7 @@
     async created() {
       const actorId = this.$route.params.id;
       
-      this.actor =await  api(`/api/actors/${actorId}`)
+      this.actor = await  api(`/api/actors/${actorId}`)
   
     }
   };

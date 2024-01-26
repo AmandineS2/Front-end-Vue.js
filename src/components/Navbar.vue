@@ -1,5 +1,6 @@
 <template>
   <div class="navbar">
+    <div class="nav-item"><router-link to="/" class="logo">Moviemania</router-link></div>
     <div class="nav-item"><router-link to="/HomeView" class="nav-link">Accueil</router-link></div>
     <div class="nav-item"><router-link to="/MoviesView" class="nav-link">Films</router-link></div>
     <div class="nav-item"><router-link to="/ActorsView" class="nav-link">Acteurs</router-link></div>
@@ -55,5 +56,11 @@ export default {
   .nav-link {
     text-decoration: none; /* Pour enlever le soulignement des liens */
     color: white; /* Pour changer la couleur du texte des liens */
+  }
+
+  .logo{
+    color: black;
+    text-decoration: none;
+    margin-inline: 50px;
   }
   </style>
