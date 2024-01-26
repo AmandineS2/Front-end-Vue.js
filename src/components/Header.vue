@@ -15,7 +15,7 @@
   .header {
   position: relative;
   width: 100%;
-  height: 490px;
+  height: 491px;
   background-image: url('../assets/img/Venom.webp');
   background-size: cover;
   background-position: center;
